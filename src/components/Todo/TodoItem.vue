@@ -22,7 +22,9 @@ export default {
         <ph-check class="todo__icon" :size="20" color="white" weight="fill" />
       </label>
     </div>
-    <p class="todo__text">{{ text }}</p>
+    <p :class="{ todo__text: true, 'todo__text--active': checkedState }">
+      {{ text }}
+    </p>
   </li>
 </template>
 
@@ -79,6 +81,11 @@ export default {
     color: var(--light-grayish-blue);
     font-size: 1.4rem;
     font-weight: 400;
+
+    &--active {
+      text-decoration: line-through;
+      color: var(--dark-graylish-blue);
+    }
 
     @media only screen and (min-width: 1080px) {
       font-size: 1.6rem;
