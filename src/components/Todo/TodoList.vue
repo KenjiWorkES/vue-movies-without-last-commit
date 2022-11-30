@@ -1,9 +1,11 @@
 <script>
 import TodoItem from './TodoItem.vue';
+import TodoControl from './TodoControl.vue';
 
 export default {
   components: {
     TodoItem,
+    TodoControl,
   },
 };
 </script>
@@ -19,10 +21,11 @@ export default {
       <TodoItem id="test6" />
       <footer class="todo__footer">
         <p class="todo__lenght">5 items left</p>
-        <button class="todo__clear">Clear Combuttonleted</button>
+        <button class="todo__clear">Clear Completed</button>
       </footer>
     </ul>
   </section>
+  <TodoControl />
 </template>
 
 <style scoped lang="scss">
@@ -37,7 +40,7 @@ export default {
   }
 
   &__footer {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
