@@ -1,12 +1,14 @@
 <script>
-export default {};
+export default {
+  props: ['id'],
+};
 </script>
 
 <template>
   <li class="todo__item">
     <div class="todo__checkboxControl">
-      <input id="checkboxAdd" type="checkbox" class="todo__checkbox" />
-      <label class="todo__checkboxLabel" for="checkboxAdd">
+      <input :id="id" type="checkbox" class="todo__checkbox" />
+      <label class="todo__checkboxLabel" :for="id">
         <ph-check class="todo__icon" :size="20" color="white" weight="fill" />
       </label>
     </div>
