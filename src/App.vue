@@ -1,17 +1,29 @@
 <script>
+import { pushScopeId } from 'vue';
 import TheHeader from './components/layout/TheHeader.vue';
 import TodoList from './components/Todo/TodoList.vue';
 
 export default {
   components: { TheHeader, TodoList },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  methods: {
+    addTaskHandler(task, isCompleted) {
+      const enteredTask = { id: task, task: task, isCompleted: isCompleted };
+      this.tasks.unshift(enteredTask);
+    },
+  },
 };
 </script>
 
 <template>
   <div class="layout">
-    <TheHeader />
+    <TheHeader :add-task="addTaskHandler" />
     <main>
-      <TodoList />
+      <TodoList :tasks="tasks" />
     </main>
   </div>
 </template>

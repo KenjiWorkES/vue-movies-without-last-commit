@@ -1,16 +1,35 @@
 <script>
-export default {};
+export default {
+  props: ['addTask'],
+  data() {
+    return {
+      enteredTask: '',
+      isChecked: false,
+    };
+  },
+  methods: {
+    addTaskHandler() {
+      this.addTask(this.enteredTask, this.isChecked);
+    },
+  },
+};
 </script>
 
 <template>
-  <form class="header__form">
+  <form @submit.prevent="addTaskHandler" class="header__form">
     <div class="header__checkboxControl">
-      <input id="checkboxAdd" type="checkbox" class="header__checkbox" />
+      <input
+        id="checkboxAdd"
+        type="checkbox"
+        class="header__checkbox"
+        v-model="isChecked"
+      />
       <label class="header__checkboxLabel" for="checkboxAdd">
         <ph-check class="header__icon" :size="20" color="white" weight="fill" />
       </label>
     </div>
     <input
+      v-model="enteredTask"
       type="text"
       class="header__input"
       aria-label="Add a new Todo"
@@ -49,9 +68,13 @@ export default {};
     width: 2.2rem;
     height: 2.2rem;
     border: 1px solid var(--light-grayish-blue);
-
     border-radius: 9999px;
     cursor: pointer;
+
+    @media only screen and (min-width: 1080px) {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   &__icon {
@@ -73,6 +96,10 @@ export default {};
     border: none;
     width: 100%;
     color: var(--light-grayish-blue-hover);
+
+    @media only screen and (min-width: 1080px) {
+      font-size: 1.6rem;
+    }
   }
 
   &__button {

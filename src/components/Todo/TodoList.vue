@@ -7,20 +7,27 @@ export default {
     TodoItem,
     TodoControl,
   },
+  props: ['tasks'],
+  data() {
+    return {
+      length: this.tasks.lenght,
+    };
+  },
 };
 </script>
 
 <template>
   <section class="todo">
     <ul class="todo__list">
-      <TodoItem id="test1" />
-      <TodoItem id="test2" />
-      <TodoItem id="test3" />
-      <TodoItem id="test4" />
-      <TodoItem id="test5" />
-      <TodoItem id="test6" />
+      <TodoItem
+        v-for="task in tasks"
+        :key="task.id"
+        :id="task.id"
+        :text="task.task"
+        :is-completed="task.isCompleted"
+      />
       <footer class="todo__footer">
-        <p class="todo__lenght">5 items left</p>
+        <p class="todo__lenght">0 items left</p>
         <button class="todo__clear">Clear Completed</button>
       </footer>
     </ul>
@@ -32,8 +39,9 @@ export default {
 .todo {
   background-color: var(--deep-dark-blue);
   border-radius: 0.5rem;
-  margin-top: -3rem;
   overflow: hidden;
+  max-width: 70rem;
+  margin: -3rem auto 0;
 
   &__list {
     list-style: none;

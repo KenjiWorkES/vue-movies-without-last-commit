@@ -1,18 +1,28 @@
 <script>
 export default {
-  props: ['id'],
+  props: ['id', 'text', 'isCompleted'],
+  data() {
+    return {
+      checkedState: this.isCompleted,
+    };
+  },
 };
 </script>
 
 <template>
   <li class="todo__item">
     <div class="todo__checkboxControl">
-      <input :id="id" type="checkbox" class="todo__checkbox" />
+      <input
+        :id="id"
+        type="checkbox"
+        class="todo__checkbox"
+        v-model="checkedState"
+      />
       <label class="todo__checkboxLabel" :for="id">
         <ph-check class="todo__icon" :size="20" color="white" weight="fill" />
       </label>
     </div>
-    <p class="todo__text">This is a test</p>
+    <p class="todo__text">{{ text }}</p>
   </li>
 </template>
 
@@ -45,6 +55,11 @@ export default {
 
     border-radius: 9999px;
     cursor: pointer;
+
+    @media only screen and (min-width: 1080px) {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   &__icon {
@@ -64,6 +79,10 @@ export default {
     color: var(--light-grayish-blue);
     font-size: 1.4rem;
     font-weight: 400;
+
+    @media only screen and (min-width: 1080px) {
+      font-size: 1.6rem;
+    }
   }
 }
 </style>

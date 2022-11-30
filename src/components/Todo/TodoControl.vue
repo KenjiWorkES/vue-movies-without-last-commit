@@ -12,7 +12,7 @@ export default {};
 
 <style scoped lang="scss">
 .filter {
-  margin-top: 2rem;
+  margin: 2rem auto;
   width: 100%;
   background-color: var(--deep-dark-blue);
   border-radius: 0.5rem;
@@ -20,6 +20,7 @@ export default {};
   align-items: center;
   justify-content: space-evenly;
   padding: 1.5rem;
+  max-width: 70rem;
 
   &__button {
     font-family: inherit;
