@@ -1,13 +1,19 @@
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
+import TodoList from './components/Todo/TodoList.vue';
 
 export default {
-  components: { TheHeader },
+  components: { TheHeader, TodoList },
 };
 </script>
 
 <template>
-  <TheHeader />
+  <div class="layout">
+    <TheHeader />
+    <main>
+      <TodoList />
+    </main>
+  </div>
 </template>
 
 <style lang="scss">
@@ -44,5 +50,19 @@ html {
 body {
   box-sizing: border-box;
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 0 2rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-blue);
 }
 </style>
