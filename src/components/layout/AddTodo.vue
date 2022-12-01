@@ -10,6 +10,7 @@ export default {
   methods: {
     addTaskHandler() {
       this.addTask(this.enteredTask, this.isChecked);
+      this.enteredTask = '';
     },
   },
 };

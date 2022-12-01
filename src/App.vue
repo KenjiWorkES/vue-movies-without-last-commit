@@ -1,5 +1,4 @@
 <script>
-import { pushScopeId } from 'vue';
 import TheHeader from './components/layout/TheHeader.vue';
 import TodoList from './components/Todo/TodoList.vue';
 
@@ -23,6 +22,15 @@ export default {
         this.tasks[id] = selectedTask;
       }
     },
+    clearTasks() {
+      const newTasks = this.tasks.map((task) => ({
+        id: task.id,
+        task: task.task,
+        isCompleted: false,
+      }));
+      console.log(newTasks);
+      this.tasks = newTasks;
+    },
   },
   provide() {
     return {
@@ -36,7 +44,7 @@ export default {
   <div class="layout">
     <TheHeader :add-task="addTaskHandler" />
     <main>
-      <TodoList :tasks="tasks" />
+      <TodoList :tasks="tasks" :clear-tasks="clearTasks" />
     </main>
   </div>
 </template>

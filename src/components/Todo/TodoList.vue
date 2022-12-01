@@ -7,7 +7,7 @@ export default {
     TodoItem,
     TodoControl,
   },
-  props: ['tasks'],
+  props: ['tasks', 'clearTasks'],
   computed: {
     tasksLenght() {
       return this.tasks.length;
@@ -28,7 +28,7 @@ export default {
       />
       <footer class="todo__footer">
         <p class="todo__lenght">{{ tasksLenght }} items left</p>
-        <button class="todo__clear">Clear Completed</button>
+        <button class="todo__clear" @click="clearTasks">Clear Completed</button>
       </footer>
     </ul>
   </section>
