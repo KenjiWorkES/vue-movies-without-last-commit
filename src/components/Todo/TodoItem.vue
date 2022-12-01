@@ -1,6 +1,7 @@
 <script>
 export default {
   props: ['id', 'text', 'isCompleted'],
+  inject: ['updateTaskHandler'],
   data() {
     return {
       checkedState: this.isCompleted,
@@ -17,6 +18,7 @@ export default {
         type="checkbox"
         class="todo__checkbox"
         v-model="checkedState"
+        @change="updateTaskHandler(id, checkedState)"
       />
       <label class="todo__checkboxLabel" :for="id">
         <ph-check class="todo__icon" :size="20" color="white" weight="fill" />

@@ -15,6 +15,19 @@ export default {
       const enteredTask = { id: task, task: task, isCompleted: isCompleted };
       this.tasks.unshift(enteredTask);
     },
+    updateTask(id, checkedState) {
+      console.log(checkedState);
+      const selectedTask = this.tasks.filter((task) => task.id === id);
+      if (selectedTask) {
+        selectedTask.isCompleted = checkedState;
+        this.tasks[id] = selectedTask;
+      }
+    },
+  },
+  provide() {
+    return {
+      updateTaskHandler: this.updateTask,
+    };
   },
 };
 </script>

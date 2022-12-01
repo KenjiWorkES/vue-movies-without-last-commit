@@ -8,10 +8,10 @@ export default {
     TodoControl,
   },
   props: ['tasks'],
-  data() {
-    return {
-      length: this.tasks.lenght,
-    };
+  computed: {
+    tasksLenght() {
+      return this.tasks.length;
+    },
   },
 };
 </script>
@@ -27,7 +27,7 @@ export default {
         :is-completed="task.isCompleted"
       />
       <footer class="todo__footer">
-        <p class="todo__lenght">0 items left</p>
+        <p class="todo__lenght">{{ tasksLenght }} items left</p>
         <button class="todo__clear">Clear Completed</button>
       </footer>
     </ul>
